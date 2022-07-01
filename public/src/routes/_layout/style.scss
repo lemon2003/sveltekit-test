@@ -20,3 +20,12 @@
 .appBody {
   padding: 20px;
 }
+
+.homeLink {
+  color:inherit;
+  
+  > .c-icon {
+    font-size: 1.8em;
+    font-weight: 210;
+  }
+}

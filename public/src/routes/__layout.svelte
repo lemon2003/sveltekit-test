@@ -1,5 +1,7 @@
 <script lang="ts">
   import "$styles/global.scss";
+  import "$styles/components/icon.scss";
+  import "$styles/components/icon-button.scss";
   import "./_layout/style.scss";
 </script>
 
@@ -7,10 +9,14 @@
   <div class="appHeader">
     <div class="appHeader-inner">
       <div class="appHeader-group">
-        <a href="/"><span>top page</span></a>
+        <a href="/" class="c-icon-button homeLink">
+          <span class="c-icon">functions</span>
+        </a>
       </div>
       <div class="appHeader-group">
-        <a href="/search"><span>search</span></a>
+        <a href="/search" class="c-icon-button">
+          <span class="c-icon">search</span>
+        </a>
       </div>
     </div>
   </div>
