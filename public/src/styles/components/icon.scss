@@ -1,0 +1,26 @@
+@use "material-symbols" with (
+  $material-symbols-font-path: "./node_modules/material-symbols/"
+);
+
+$variant: ("outlined");
+
+@function capitalize-first-letter($str) {
+  $first-letter: str-slice($str, 1, 1);
+  $rest: str-slice($str, 2);
+
+  @return to-upper-case($first-letter) + $rest;
+}
+
+.c-icon {
+  $parent: &;
+  
+  font-size: inherit;
+
+  @each $v in $variant {
+    &--#{$v} {
+      font-family: "Material Symbols #{capitalize-first-letter($v)}";
+    }
+  }
+
+  @extend #{$parent}--outlined;
+}

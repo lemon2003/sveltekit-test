@@ -1,0 +1,31 @@
+.appRoot {
+  width: 100%;
+}
+
+.appHeader {
+  padding: 0 20px;
+
+  &-inner {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 800px; // for ease of development
+    width: 100%;
+  }
+}
+
+.appBody {
+  padding: 20px;
+}
+
+.homeLink {
+  color:inherit;
+  
+  > .c-icon {
+    font-size: 1.8em;
+    font-weight: 210;
+  }
+}

@@ -1,0 +1,16 @@
+.c-icon-button {
+  align-items: center;
+  background-color: unset;
+  border: none;
+  appearance: none;
+  color: #78909c;
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2em;
+  justify-content: center;
+  text-decoration: none;
+
+  &:hover {
+    color: #546e7a;
+  }
+}
