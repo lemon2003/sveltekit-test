@@ -1,0 +1,39 @@
+.articleHeader {
+  background-color: #fff;
+  margin: 20px 0;
+  overflow: hidden;
+  padding: 10px 20px;
+
+  &__inner {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+}
+
+.articleTitle {
+  margin: 10px 0;
+}
+
+.articleMeta {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+
+  &__item {
+    align-items: center;
+    display: flex;
+    gap: 7px;
+    margin: 0;
+  }
+}
+
+.articleBody {
+  margin: 20px 0;
+
+  &__inner {
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+  }
+}
