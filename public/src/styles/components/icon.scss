@@ -1,5 +1,5 @@
-@use "material-symbols" with (
-  $material-symbols-font-path: "./node_modules/material-symbols/"
+@use "material-symbols" as material-symbols with (
+  $material-symbols-font-path: "/node_modules/material-symbols/"
 );
 
 $variant: ("outlined");
@@ -13,12 +13,11 @@ $variant: ("outlined");
 
 .c-icon {
   $parent: &;
-  
-  font-size: inherit;
 
   @each $v in $variant {
     &--#{$v} {
-      font-family: "Material Symbols #{capitalize-first-letter($v)}";
+      @extend .material-symbols-#{$v};
+      font-size: inherit;
     }
   }
 
