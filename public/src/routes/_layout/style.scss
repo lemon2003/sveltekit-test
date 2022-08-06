@@ -3,23 +3,23 @@
 }
 
 .appHeader {
-  padding: 0 40px;
-
   &-inner {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     height: 60px;
     justify-content: space-between;
     margin: auto;
-    max-width: 800px; // for ease of development
+    max-width: var(--app-max-width);
+    padding: 0 20px;
     width: 100%;
   }
 }
 
 .appBody {
   background-color: #eee;
-  padding: 20px;
+  overflow: hidden;
 }
 
 .homeLink {
