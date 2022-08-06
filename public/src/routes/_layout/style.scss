@@ -12,7 +12,7 @@
     height: 60px;
     justify-content: space-between;
     margin: auto;
-    max-width: 800px; // for ease of development
+    max-width: var(--app-max-width);
     width: 100%;
   }
 }

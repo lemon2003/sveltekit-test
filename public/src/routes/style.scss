@@ -5,6 +5,6 @@
 .item {
   background-color: #fff;
   margin: 20px auto;
-  max-width: 800px;
+  max-width: var(--app-max-width);
   padding: 20px;
 }
