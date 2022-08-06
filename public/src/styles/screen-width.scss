@@ -1,0 +1,98 @@
+$breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 900px,
+  lg: 1200px,
+  xl: 1536px
+);
+
+@mixin up($bp: xs) {
+  $lower: map-get($breakpoints, $bp);
+  
+  @if $bp == null {
+    @error "$bp must be a key of $breakpoints";
+  }
+  
+  @media screen and (min-width: $lower) {
+    @content;
+  }
+}
+
+@mixin down($bp: xs) {
+  $upper: map-get($breakpoints, $bp);
+  
+  @if $bp == null {
+    @error "$bp must be a key of $breakpoints";
+  }
+
+  @media screen and (max-width: ($upper - 1px)) {
+    @content;
+  }
+}
+
+@mixin only($bp: xs) {
+  $keys: map-keys($breakpoints);
+  $values: map-values($breakpoints);
+  
+  $index: index($keys, $bp);
+  
+  @if $index == null {
+    @error "$bp must be a key of $breakpoints";
+  }
+  
+  $lower: nth($values, $index);
+  
+  @if $index < length($breakpoints) {
+    $upper: nth($values, $index + 1);
+    
+    @media screen and (min-width: $lower) and (max-width: ($upper - 1px)) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $lower) {
+      @content;
+    }
+  }
+}
+
+@mixin not($bp: xs) {
+  $keys: map-keys($breakpoints);
+  $values: map-values($breakpoints);
+  
+  $index: index($keys, $bp);
+  
+  @if $index == null {
+    @error "$bp must be a key of $breakpoints";
+  }
+  
+  $lower: nth($values, $index);
+  
+  @if $index < length($breakpoints) {
+    $upper: nth($values, $index + 1);
+    
+    @media screen and (min-width: $lower), (max-width: ($upper - 1px)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $lower) {
+      @content;
+    }
+  }
+}
+
+@mixin between($bp1: xs, $bp2: sm) {
+  $lower: map-get($breakpoints, $bp1);
+  $upper: map-get($breakpoints, $bp2);
+  
+  @if $lower == null {
+    @error "$bp1 must be a key of $breakpoints";
+  }
+  
+  @if $upper == null {
+    @error "$bp2 must be a key of $breakpoints";
+  }
+  
+  @media screen and (min-width: $lower) and (max-width: ($upper - 1px)) {
+    @content;
+  }
+}
