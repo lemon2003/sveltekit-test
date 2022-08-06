@@ -2,11 +2,12 @@
   background-color: #fff;
   margin: 20px 0;
   overflow: hidden;
-  padding: 10px 20px;
-
+  
   &__inner {
+    box-sizing: border-box;
     margin: 0 auto;
     max-width: var(--app-max-width);
+    padding: 10px 20px;
   }
 }
 
