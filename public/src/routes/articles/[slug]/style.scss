@@ -1,14 +1,32 @@
-.articleHeader {
-  background-color: #fff;
-  margin: 20px 0;
-  overflow: hidden;
-  
-  &__inner {
-    box-sizing: border-box;
-    margin: 0 auto;
-    max-width: var(--app-max-width);
-    padding: 10px 20px;
+@use "$styles/screen-width" as screen-width;
+
+.appHeader {
+  box-shadow: 0 0 10px #0001;
+}
+
+.articleWrapper {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  margin: 0 auto;
+  margin: 20px auto;
+  max-width: var(--app-max-width);
+  padding: 0 20px;
+
+  @include screen-width.down(sm) {
+    padding: 0;
   }
+}
+
+.articleBody {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #0001;
+  padding: 20px;
+}
+
+.articleHeader {
+  margin: 0 0 30px ;
 }
 
 .articleTitle {
@@ -28,26 +46,15 @@
   }
 }
 
-.articleBody {
-  margin: 20px 0;
-
-  &__inner {
-    display: flex;
-    gap: 20px;
-    flex-direction: row;
-    margin: 0 auto;
-    max-width: var(--app-max-width);
-  }
-}
-
-.articleContent {
-  background-color: #fff;
-  padding: 20px;
-}
-
 .articleSidebar {
   background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #0001;
   flex-shrink: 0;
   padding: 20px;
   width: 300px;
+
+  @include screen-width.down("md") {
+    display: none;
+  }
 }
