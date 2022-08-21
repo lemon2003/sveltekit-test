@@ -33,6 +33,7 @@
   },
   "type": "module",
   "dependencies": {
+    "firebase-admin": "^11.0.1",
     "material-symbols": "^0.2.1"
   }
 }
