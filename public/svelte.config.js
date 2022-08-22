@@ -1,4 +1,4 @@
-import path, { resolve } from "path";
+import path from "path";
 import adapter from "@sveltejs/adapter-auto";
 import preprocess from "svelte-preprocess";
 
@@ -8,7 +8,9 @@ const config = {
   // for more information about preprocessors
   preprocess: preprocess({
     aliases: {
-      $styles: path.resolve("./src/styles")
+      $styles: path.resolve("./src/styles"),
+      $firebase: path.resolve("./src/firebase"),
+      $lib: path.resolve("./src/lib")
     }
   }),
 
@@ -17,7 +19,9 @@ const config = {
     vite: {
       resolve: {
         alias: {
-          $styles: resolve("./src/styles")
+          $styles: path.resolve("./src/styles"),
+          $firebase: path.resolve("./src/firebase"),
+          $lib: path.resolve("./src/lib")
         }
       }
     }
