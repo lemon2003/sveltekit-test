@@ -38,5 +38,19 @@
     "ui": {
       "enabled": true
     }
+  },
+  "hosting": {
+    "public": "public/build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssr"
+      }
+    ]
   }
 }

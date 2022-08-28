@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "outDir": "dist",
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
-    "target": "es2017"
+    "isolatedModules": true,
+    "preserveValueImports": true,
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "esnext",
+    "outDir": "dist"
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "./src/index.ts"
   ]
 }
