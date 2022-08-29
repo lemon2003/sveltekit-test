@@ -1,7 +1,6 @@
 import * as functions from "firebase-functions";
 import express from "express";
-// @ts-ignore
-import { handler } from "./sveltekit/handler.ts";
+import { handler } from "public/build/handler.js";
 
 const app = express();
 app.use(handler);
