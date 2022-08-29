@@ -8,11 +8,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
-    "paths": {
-      "$lib/*": ["src/lib/*"],
-      "$styles/*": ["src/styles/*"],
-      "$firebase/*": ["src/firebase/*"]
-    }
+    "strict": true
   }
 }
