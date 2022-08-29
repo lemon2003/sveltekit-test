@@ -8,7 +8,7 @@ type MetaDocType = {
   updated: Timestamp;
 };
 
-export const get: import("./__types/+page").RequestHandler = async ({ params }) => {
+export const load: import("./$types").PageLoad = async ({ params }) => {
   const app = getFirebaseApp();
   const firestore = getFirestore();
 
