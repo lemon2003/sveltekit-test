@@ -48,7 +48,8 @@
     "rewrites": [
       {
         "source": "**",
-        "function": "ssr"
+        "function": "ssr",
+        "region": "asia-northeast1"
       }
     ]
   }
