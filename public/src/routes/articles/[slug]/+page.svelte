@@ -2,25 +2,24 @@
   import "$styles/components/icon.scss";
   import "./style.scss";
 
-  export let meta: any;
-  export let content: any;
+  export let data: import("./$types").PageData;
 </script>
 
 <div class="articleWrapper">
   <div class="articleBody">
     <header class="articleHeader">
       <h1 class="articleTitle">
-        {meta.title}
+        {data.meta.title}
       </h1>
       <ul class="articleMeta">
         <li class="articleMeta__item">
-          <span class="c-icon">history</span>Last Updated: {meta.updated}
+          <span class="c-icon">history</span>Last Updated: {data.meta.updated}
         </li>
       </ul>
     </header>
     <main class="articleMain">
       <article class="content">
-        {content}
+        {data.content}
       </article>
     </main>
   </div>

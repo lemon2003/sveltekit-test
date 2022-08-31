@@ -1,6 +1,7 @@
 import { getFirestore, type Timestamp } from "firebase-admin/firestore";
 import { getFirebaseApp } from "$firebase/server/getFirebaseApp";
 import { formatLong } from "$lib/dateFormatters";
+import { error } from "@sveltejs/kit";
 
 type MetaDocType = {
   title: string;
@@ -8,9 +9,9 @@ type MetaDocType = {
   updated: Timestamp;
 };
 
-export const load: import("./$types").PageLoad = async ({ params }) => {
+export const load: import("./$types").PageServerLoad = async ({ params }) => {
   const app = getFirebaseApp();
-  const firestore = getFirestore();
+  const firestore = getFirestore(app);
 
   const metaDoc = await firestore.doc(`/articlesMeta/${params.slug}`).get();
   const contentDoc = await firestore.doc(`/articlesContent/${params.slug}`).get();
@@ -22,19 +23,14 @@ export const load: import("./$types").PageLoad = async ({ params }) => {
     const content = contentDoc.get("content") as string;
 
     return {
-      status: 200,
-      body: {
-        meta: {
-          title,
-          published: formatLong(published.toDate()),
-          updated: formatLong(updated.toDate())
-        },
-        content
-      }
+      meta: {
+        title,
+        published: formatLong(published.toDate()),
+        updated: formatLong(updated.toDate())
+      },
+      content
     };
   } else {
-    return {
-      status: 404
-    };
+    return error(404);
   }
 };
