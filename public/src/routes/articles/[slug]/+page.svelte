@@ -1,6 +1,7 @@
 <script lang="ts">
   import "$styles/components/icon.scss";
   import "./style.scss";
+  import "prismjs/themes/prism.min.css";
 
   export let data: import("./$types").PageData;
 </script>
@@ -19,7 +20,7 @@
     </header>
     <main class="articleMain">
       <article class="content">
-        {data.content}
+        {@html data.content}
       </article>
     </main>
   </div>

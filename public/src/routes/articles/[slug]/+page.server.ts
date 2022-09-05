@@ -1,7 +1,8 @@
+import { error } from "@sveltejs/kit";
 import { getFirestore, type Timestamp } from "firebase-admin/firestore";
 import { getFirebaseApp } from "$firebase/server/getFirebaseApp";
 import { formatLong } from "$lib/dateFormatters";
-import { error } from "@sveltejs/kit";
+import { markdown2html } from "$lib/markdown/markdown2html";
 
 type MetaDocType = {
   title: string;
@@ -20,7 +21,14 @@ export const load: import("./$types").PageServerLoad = async ({ params }) => {
 
   if (isExist) {
     const { title, published, updated } = metaDoc.data() as MetaDocType;
-    const content = contentDoc.get("content") as string;
+    const contentMarkdown = contentDoc.get("content") as string;
+
+    const contentHtml = await markdown2html(
+      contentMarkdown
+        .replace(/\\n/g,"\n")
+        .replace(/\\t/g, "\t")
+        .replace(/\\\\/g, "\\")
+    ).then(vfile => vfile.toString());
 
     return {
       meta: {
@@ -28,7 +36,7 @@ export const load: import("./$types").PageServerLoad = async ({ params }) => {
         published: formatLong(published.toDate()),
         updated: formatLong(updated.toDate())
       },
-      content
+      content: contentHtml
     };
   } else {
     return error(404);
