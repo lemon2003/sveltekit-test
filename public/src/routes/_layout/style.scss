@@ -11,7 +11,7 @@
     height: 60px;
     justify-content: space-between;
     margin: auto;
-    max-width: var(--app-max-width);
+    max-width: calc(var(--app-max-width) + 2 * 20px);
     padding: 0 20px;
     width: 100%;
   }
@@ -19,7 +19,6 @@
 
 .appBody {
   background-color: #eee;
-  overflow: hidden;
 }
 
 .homeLink {

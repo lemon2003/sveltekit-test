@@ -9,12 +9,11 @@
   gap: 20px;
   flex-direction: row;
   margin: 0 auto;
-  margin: 20px auto;
   max-width: var(--app-max-width);
-  padding: 0 20px;
+  padding: 20px;
 
   @include screen-width.down(sm) {
-    padding: 0;
+    padding: 20px 0;
   }
 }
 
@@ -22,8 +21,9 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px #0001;
-  padding: 20px;
+  flex-grow: 1;
   min-width: 0;
+  padding: 20px;
 }
 
 .articleHeader {
@@ -48,11 +48,14 @@
 }
 
 .articleSidebar {
+  align-self: flex-start;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px #0001;
   flex-shrink: 0;
   padding: 20px;
+  position: sticky;
+  top: 20px;
   width: 300px;
 
   @include screen-width.down("md") {
