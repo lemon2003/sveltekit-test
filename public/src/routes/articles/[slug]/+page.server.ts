@@ -21,14 +21,14 @@ export const load: import("./$types").PageServerLoad = async ({ params }) => {
 
   if (isExist) {
     const { title, published, updated } = metaDoc.data() as MetaDocType;
-    const contentMarkdown = contentDoc.get("content") as string;
+    const contentRawMarkdown = contentDoc.get("content") as string;
 
-    const contentHtml = await markdown2html(
-      contentMarkdown
-        .replace(/\\n/g,"\n")
-        .replace(/\\t/g, "\t")
-        .replace(/\\\\/g, "\\")
-    ).then(vfile => vfile.toString());
+    const contentMarkdown = contentRawMarkdown
+      .split("\\\\")
+      .map((v) => v.split("\\n").join("\n"))
+      .join("\\");
+
+    const contentHtml = await markdown2html(contentMarkdown).then((vfile) => vfile.toString());
 
     return {
       meta: {
