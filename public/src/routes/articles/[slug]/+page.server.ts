@@ -2,7 +2,7 @@ import { error } from "@sveltejs/kit";
 import { getFirestore, type Timestamp } from "firebase-admin/firestore";
 import { getFirebaseApp } from "$firebase/server/getFirebaseApp";
 import { formatLong } from "$lib/dateFormatters";
-import { markdown2html } from "$lib/markdown/markdown2html";
+import { markdown2ast } from "$lib/markdown/markdown2ast";
 
 type MetaDocType = {
   title: string;
@@ -28,7 +28,7 @@ export const load: import("./$types").PageServerLoad = async ({ params }) => {
       .map((v) => v.split("\\n").join("\n"))
       .join("\\");
 
-    const contentHtml = await markdown2html(contentMarkdown).then((vfile) => vfile.toString());
+    const content = await markdown2ast(contentMarkdown);
 
     return {
       meta: {
@@ -36,7 +36,7 @@ export const load: import("./$types").PageServerLoad = async ({ params }) => {
         published: formatLong(published.toDate()),
         updated: formatLong(updated.toDate())
       },
-      content: contentHtml
+      content
     };
   } else {
     return error(404);

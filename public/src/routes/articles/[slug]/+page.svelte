@@ -1,7 +1,8 @@
 <script lang="ts">
   import "$styles/components/icon.scss";
   import "./style.scss";
-  import "prismjs/themes/prism.min.css";
+  import XmdViewer from "$lib/markdown/xmd-viewer/index.svelte";
+  import Toc from "$lib/markdown/xmd-viewer/extra/Toc/index.svelte";
 
   export let data: import("./$types").PageData;
 </script>
@@ -20,24 +21,13 @@
     </header>
     <main class="articleMain">
       <article class="content">
-        {@html data.content}
+        <XmdViewer rootNode={data.content} />
       </article>
     </main>
   </div>
   <aside class="articleSidebar">
     <nav>
-      <ul>
-        <li>Lorem, ipsum dolor.</li>
-        <li>Iusto, corporis quidem!</li>
-        <li>Hic, sequi sint.</li>
-        <li>Numquam, libero beatae!</li>
-        <li>Exercitationem, nesciunt ipsum.</li>
-        <li>Excepturi, quisquam voluptates.</li>
-        <li>Facere, laborum placeat.</li>
-        <li>Illo, corrupti enim.</li>
-        <li>Consectetur, vel quam.</li>
-        <li>In, temporibus optio?</li>
-      </ul>
+      <Toc toc={data.content.exported.toc} />
     </nav>
   </aside>
 </div>
